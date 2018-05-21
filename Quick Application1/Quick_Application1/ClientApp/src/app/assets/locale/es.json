@@ -1,0 +1,182 @@
+{
+    "app": {
+        "Welcome": "Bienvenidos",
+        "Notifications": "Notificaiones",
+        "New": "Nuevo"
+    },
+    "mainMenu": {
+        "Appointments": "Equipo",
+        "Customers": "Clientes",
+        "Products": "Productos",
+        "Orders": "Ordenes",
+        "About": "Nosotros",
+        "Logout": "Salir"
+    },
+    "pageHeader": {
+        "Dashboard": "Escritorio",
+        "Customers": "Clientes",
+        "Products": "Productos",
+        "Orders": "Odenes",
+        "NotFound": "No encontrado",
+        "About": "Nosotros",
+        "Settings": "Ajustes"
+    },
+    "home": {
+        "NoWidgets1": "No tiene ningún widget disponible. Goto",
+        "NoWidgets2": "a configurar widgets",
+        "StatisticsTitle": "Algunas cosas importantes"
+    },
+    "notFound": {
+        "404": "404",
+        "pageNotFound": "La página que está buscando no esiste",
+        "backToHome": "Volver al Inicio"
+    },
+    "settings": {
+        "tab": {
+            "Profile": "Perfil",
+            "Preferences": "Preferencias",
+            "Users": "Usuarios",
+            "Roles": "Roles"
+        },
+        "header": {
+            "UserProfile": "Perfile de usuario",
+            "UserPreferences": "Preferencias de usuario",
+            "UserDepartments": "Departamento de usuario",
+            "UsersManagements": "Administración de usuarios",
+            "RolesManagement": "Administración de roles"
+        }
+    },
+    "preferences": {
+        "ReloadPreferences": "Reload Preferences:",
+        "ReloadPreferencesHint": "Load default preferences (local changes are discarded)",
+        "Language": "Lenguaje:",
+        "English": "Inglés",
+        "French": "Francés",
+        "German": "Alemán",
+        "Portuguese": "Portigués",
+        "Arabic": "Árabe",
+        "Korean": "Coreano",
+        "Spanish": "Español",
+        "LanguageHint": "Seleccione el leguaje prefereido para su cuenta",
+        "HomePage": "Página Inicio:",
+        "Dashboard": "Escritorio",
+        "Customers": "Clientes",
+        "Products": "Productos",
+        "Orders": "Ordenes",
+        "About": "Nosotros",
+        "Settings": "Ajustes",
+        "HomePageHint": "Seleccione la página default para navegar al inicio de sesión",
+        "Theme": "Tema:",
+        "DefaultColor": "<span class='default-theme-option'>Default</span>",
+        "RedColor": "<span class='red-theme-option'>Rojo</span>",
+        "OrangeColor": "<span class='orange-theme-option'>Naranja</span>",
+        "GreenColor": "<span class='green-theme-option'>Verde</span>",
+        "GrayColor": "<span class='gray-theme-option'>Gris</span>",
+        "BlackColor": "<span class='black-theme-option'>Negro</span>",
+        "ThemeHint": "Seleccione el color por defecto del tema de su cuenta",
+        "DashboardStatistics": "Escritorio de estadísticas:",
+        "DashboardStatisticsHint": "Muestre el demo del widget de gráficoen el escritorio",
+        "DashboardNotifications": "Notificaciones:",
+        "DashboardNotificationsHint": "Muestre las notificaciones en el escritorio",
+        "DashboardTodo": "Dashboard Todo:",
+        "DashboardTodoHint": "Shows demo todo widget on the dashboard",
+        "DashboardBanner": "Dashboard Banner:",
+        "DashboardBannerHint": "Show demo information banner widget on the dashboard",
+        "ResetDefault": "Restaurar valores",
+        "SetDefault": "Dejar valores como por defecto"
+    },
+    "users": {
+        "management": {
+            "Search": "Buscar usuario...",
+            "NewUser": "Nuevo usuario",
+            "Edit": "Editar",
+            "Delete": "Borrar",
+            "EditUser": "Editar usuario \"{{name}}\"",
+            "Title": "Título",
+            "UserName": "Nombre de usuario",
+            "FullName": "Nombre completo",
+            "Email": "Correo",
+            "Roles": "Roles",
+            "PhoneNumber": "Número de teléfono"
+        },
+        "editor": {
+            "JobTitle": "Puesto de trabajo: ",
+            "UserName": "Nombre de usuario:",
+            "UserNameRequired": "Nombre de usuario requerido (mínimo de 2 y un máximo de 200 caractéres)",
+            "Password": "Contraseña:",
+            "PasswordHint": "Tu contraseña es requerida cuando se cambia el nombre de usuario",
+            "CurrentPasswordRequired": "Password actual es requerido",
+            "Email": "Correo:",
+            "EmailRequired": "Correo electrónico es requerido (máximo de 200 caractéres)",
+            "InvalidEmail": "Correo especificado no es válido",
+            "ChangePassword": "Cambio de contraseña",
+            "CurrentPassword": "Contraseña actual:",
+            "NewPassword": "Contraseña nueva:",
+            "NewPasswordRequired": "Nueva contraseña es requerida (mínimo de 6 caractéres)",
+            "ConfirmPassword": "Confirme contraseña:",
+            "ConfirmationPasswordRequired": "Confirmación de contraseña es requerida",
+            "PasswordMismatch": "Nueva contraseña y confirmación de contraseña no coinciden",
+            "Roles": "Roles:",
+            "FullName": " Nombre completo:",
+            "RoleRequired": " Rol es requerido",
+            "PhoneNumber": "Teléfono #:",
+            "Enabled": "Habilitado",
+            "Unblock": "Desbloquear",
+            "Close": "Cerrado",
+            "Edit": "Editar",
+            "Cancel": "Cancelar",
+            "Save": "Guardar",
+            "Saving": "Guardando..."
+        }
+    },
+    "roles": {
+        "management": {
+            "Search": "Buscar rol...",
+            "NewRole": "Nuevo rol",
+            "Edit": "Editar",
+            "Details": "Detalles",
+            "Delete": "Borrar",
+            "RoleDetails": "Detalles de rol \"{{name}}\"",
+            "EditRole": "Editar rol \"{{name}}\"",
+            "Name": "Nombre",
+            "Description": "Descripción",
+            "Users": "Usarios"
+        },
+        "editor": {
+            "Name": "Nombre:",
+            "Description": "Descripción:",
+            "RoleNameRequired": "Nombre de rol es requerido (mínimo de 2 y máximo de 200 caractéres)",
+            "SelectAll": "Seleccionar todos",
+            "SelectNone": "Seleccionar ninguno",
+            "Close": "Cerrar",
+            "Cancel": "Cancelar",
+            "Save": "Guardar",
+            "Saving": "Guardando..."
+        }
+    },
+    "notifications": {
+        "Delete": "Borrar notificaciones",
+        "Pin": "Fijar notificación",
+        "Date": "Fecha",
+        "Notification": "Notificación"
+    },
+    "todoDemo": {
+        "management": {
+            "Search": "Buscar tarea...",
+            "HideCompleted": "Ocultar completo",
+            "AddTask": "Agregar tarea",
+            "Delete": "Borrar tarea",
+            "Important": "Marcar como importante",
+            "Task": "Tarea",
+            "Description": "Descripción"
+        },
+        "editor": {
+            "NewTask": "Nueva tarea",
+            "Name": "Nombre",
+            "TaskNameRequired": "Nombre de tarea es requerida",
+            "Description": "Descripción",
+            "Important": "Marcar como importante",
+            "AddTask": "Agregar tarea"
+        }
+    }
+}
