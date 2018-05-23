@@ -14,8 +14,10 @@ import { OrdersComponent } from "./components/orders/orders.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { BancosComponent } from "./components/Catalogos/bancos/bancos.component";
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+
 
 
 
@@ -28,6 +30,9 @@ import { AuthGuard } from './services/auth-guard.service';
             { path: "products", component: ProductsComponent, canActivate: [AuthGuard], data: { title: "Products" } },
             { path: "orders", component: OrdersComponent, canActivate: [AuthGuard], data: { title: "Orders" } },
             { path: "settings", component: SettingsComponent, canActivate: [AuthGuard], data: { title: "Settings" } },
+
+            { path: "bancos", component: BancosComponent, canActivate: [AuthGuard], data: { title: "Bancos" } },
+
             { path: "about", component: AboutComponent, data: { title: "About Us" } },
             { path: "home", redirectTo: "/", pathMatch: "full" },
             { path: "**", component: NotFoundComponent, data: { title: "Page Not Found" } },

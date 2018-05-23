@@ -14,9 +14,9 @@ namespace DAL.Repositories
         { }
 
 
-        public IEnumerable<bancos> GetBancos()
+        public async Task<IEnumerable<bancos>> GetBancos()
         {
-            return _appContext.bancos.ToList();
+            return await _appContext.bancos.ToListAsync();
         }
 
 

@@ -1,0 +1,29 @@
+﻿<h1>Administración de Bancos</h1>
+
+<p>Componente que genera una interfaz amigable para administrar los bancos del sistema.</p>
+
+<p *ngIf="!bancosList"><em>Cargando....</em></p>
+
+
+<p>
+    <a  [routerLink] = "['/registrar-banco']"> Agregar nuevo </a>
+</p>
+
+<table class="table" *ngIf="bancosList">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+    </thead>
+    <tbody *ngFor="let banco of bancosList">
+            <tr *ngIf="!banco.deleted">
+                <td>{{banco.id}}</td>
+                <td>{{banco.descripcion}}</td>
+                <td></td>
+                <td>
+                    <a [routerLink]="['/banco/editar/', banco.id]">Editar</a> |
+                    <a [routerLink]="" (click)="delete(banco.id)">Eliminar</a>
+                </td>
+            </tr>
+    </tbody>
+</table>

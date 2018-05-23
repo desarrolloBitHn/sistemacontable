@@ -32,6 +32,8 @@ import { NotificationService } from './services/notification.service';
 import { NotificationEndpoint } from './services/notification-endpoint.service';
 import { AccountService } from './services/account.service';
 import { AccountEndpoint } from './services/account-endpoint.service';
+import { BancoService } from './services/banco.service';
+import { BancoEndpont } from './services/banco-endpoint.service';
 
 import { EqualValidator } from './directives/equal-validator.directive';
 import { LastElementDirective } from './directives/last-element.directive';
@@ -51,6 +53,7 @@ import { OrdersComponent } from "./components/orders/orders.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { BancosComponent } from "./components/Catalogos/bancos/bancos.component";
 
 import { BannerDemoComponent } from "./components/controls/banner-demo.component";
 import { TodoDemoComponent } from "./components/controls/todo-demo.component";
@@ -100,6 +103,7 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         RolesManagementComponent, RoleEditorComponent,
         AboutComponent,
         NotFoundComponent,
+        BancosComponent,
         NotificationsViewerComponent,
         SearchBoxComponent,
         StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
@@ -123,6 +127,7 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         NotificationEndpoint,
         AccountService,
         AccountEndpoint,
+        BancoService, BancoEndpont,
         LocalStoreManager,
         EndpointFactory
     ],
