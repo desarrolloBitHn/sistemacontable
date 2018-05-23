@@ -20,6 +20,7 @@ namespace DAL
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
+        IbancosRepository _bancos;
 
 
 
@@ -28,6 +29,16 @@ namespace DAL
             _context = context;
         }
 
+
+        public IbancosRepository Bancos
+        {
+            get {
+                if (_bancos == null)
+                    _bancos = new bancosRepository(_context);
+
+                return _bancos;
+            }
+        }
 
 
         public ICustomerRepository Customers

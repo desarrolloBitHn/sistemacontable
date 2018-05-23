@@ -18,6 +18,7 @@
                 <div *ngIf="isUserLoggedIn" class="app-component collapse navbar-collapse menuItemsContainer">
                     <ul class="app-component nav navbar-nav nav-pills navBarPadding">
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink=""><span class="glyphicon glyphicon-home"></span></a></li>
+                        <li routerLinkActive="active" *ngIf="canViewCustomers"><a routerLink="/bancos">bancos</a></li>
                         <li routerLinkActive="active" *ngIf="canViewCustomers"><a routerLink="/customers">{{'mainMenu.Customers' | translate}}</a></li>
                         <li routerLinkActive="active" *ngIf="canViewProducts"><a routerLink="/products">{{'mainMenu.Products' | translate}}</a></li>
                         <li routerLinkActive="active" *ngIf="canViewOrders"><a routerLink="/orders">{{'mainMenu.Orders' | translate}}</a></li>
