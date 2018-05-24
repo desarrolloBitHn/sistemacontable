@@ -19,6 +19,8 @@ namespace DAL.Repositories
             return await _appContext.bancos.ToListAsync();
         }
 
+        
+
 
         //// GET: api/bancos/5
         //[HttpGet("{id}")]

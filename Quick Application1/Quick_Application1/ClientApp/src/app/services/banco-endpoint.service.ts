@@ -1,25 +1,25 @@
 import { Injectable, Injector } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/catch';
 
-import { bancos } from '../models/bancos.model';
-
+import { AuthService } from './auth.service';
 import { EndpointFactory } from './endpoint-factory.service';
 import { ConfigurationService } from './configuration.service';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
 
 
 @Injectable()
 export class BancoEndpont extends EndpointFactory {
 
-    private readonly _bancos: string = "/api/bancos";
+    private readonly _bancos: string = "/api/banco/bancos";
 
     get bancosUrl() { return this.configurations.baseUrl + this._bancos; }
 
     constructor(http: HttpClient, configurations: ConfigurationService, injector: Injector) {
-
         super(http, configurations, injector);
     }
 
