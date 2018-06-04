@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DAL.Models;
 using DAL.Repositories.Interfaces;
-
+using System;
 namespace DAL.Repositories
 {
     class bancosRepository : Repository<bancos>, IbancosRepository
@@ -19,103 +19,54 @@ namespace DAL.Repositories
             return await _appContext.bancos.ToListAsync();
         }
 
-        
+        public async Task<bancos> GetBancoById(int _id) {
+            return await _appContext.bancos.FindAsync(_id);
+        }
 
+        public async Task<Tuple<bool, string>> PutActualizarBanco(bancos _banco) {
+            try
+            {
+                _appContext.Entry(_banco).State = EntityState.Modified;
+                await _appContext.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return Tuple.Create(false, e.Message);
+                throw;
+            }
 
-        //// GET: api/bancos/5
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Getbancos([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+            return Tuple.Create(true, "Modificado");
+        }
 
-        //    var bancos = await _context.bancos.SingleOrDefaultAsync(m => m.ID == id);
+        public async Task<Tuple<bool, bancos>> PostBancos(bancos _banco) {
+            try
+            {
+                _appContext.bancos.Add(_banco);
+                await _appContext.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return Tuple.Create(false, _banco);
+                throw;
+            }
+            return Tuple.Create(true, _banco);
+        }
 
-        //    if (bancos == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(bancos);
-        //}
-
-        //// PUT: api/bancos/5
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Putbancos([FromRoute] int id, [FromBody] bancos banco)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != banco.ID)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(banco).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!bancosExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //// POST: api/bancos
-        //[HttpPost]
-        //public async Task<IActionResult> Postbancos([FromBody] bancos bancos)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    _context.bancos.Add(bancos);
-        //    await _context.SaveChangesAsync();
-
-        //    return CreatedAtAction("Getbancos", new { id = bancos.ID }, bancos);
-        //}
-
-        //// DELETE: api/bancos/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Deletebancos([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var bancos = await _context.bancos.SingleOrDefaultAsync(m => m.ID == id);
-        //    if (bancos == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.bancos.Remove(bancos);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(bancos);
-        //}
-
-        //private bool bancosExists(int id)
-        //{
-        //    return _context.bancos.Any(e => e.ID == id);
-        //}
+        public async Task<Tuple<bool, string>> DeleteBancos(int _id) {
+            try
+            {
+                var _banco = await GetBancoById(_id);
+                _banco.deleted = true;
+                _appContext.Entry(_banco).State = EntityState.Modified;
+                await _appContext.SaveChangesAsync();
+                return Tuple.Create(false, "Eliminado");
+            }
+            catch (Exception e)
+            {
+                return Tuple.Create(false, e.Message);
+                throw;
+            }
+        }
 
 
         private ApplicationDbContext _appContext => (ApplicationDbContext)_context;

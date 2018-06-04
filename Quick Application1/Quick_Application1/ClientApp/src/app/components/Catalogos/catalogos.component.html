@@ -1,0 +1,45 @@
+<div class="container">
+    <header class="pageHeader">
+        <h3><i class="fa fa-cog fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Catalogue' | translate}}</h3>
+    </header>
+
+    <div [@fadeInOut] class="row">
+
+
+        <div class="col-sm-2 side-menu">
+            <ul bootstrapTab #tab="bootstrap-tab" class="nav nav-tabs tabs-left" (showBSTab)="onShowTab($event)">
+                <li class="active">
+                    <a id="bankTab" [routerLink]="[]" fragment="bank" href="#bank" data-toggle="tab"><i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i> {{'catalogue.tab.Bank' | translate}}</a>
+                </li>
+                <li>
+                    <a id="accountTab" [routerLink]="[]" fragment="account" href="#account" data-toggle="tab"><i class="fa fa-sliders fa-fw" aria-hidden="true"></i> {{'catalogue.tab.Account' | translate}}</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-sm-10">
+            <div class="tab-content">
+                <div class="tab-pane active" id="bank">
+                    <h4>{{'catalogue.header.Bank' | translate}}</h4>
+                    <hr class="separator-hr" />
+                    <div [@fadeInOut] *ngIf="isCatalogueActivated" class="content-container">
+                         <bank-management></bank-management>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="account">
+                    <h4>{{'catalogue.header.Account' | translate}}</h4>
+                    <hr class="separator-hr" />
+                    <div [@fadeInOut] *ngIf="isAccountActivated" class="content-container">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

@@ -156,6 +156,9 @@ namespace Quick_Application1
 
             services.AddAuthorization(options =>
             {
+                options.AddPolicy(Authorization.Policies.ViewAllBanksPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission,AppPermissions.ViewBanks));
+                options.AddPolicy(Authorization.Policies.ManageAllBankssPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ManageBanks));
+
                 options.AddPolicy(Authorization.Policies.ViewAllUsersPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ViewUsers));
                 options.AddPolicy(Authorization.Policies.ManageAllUsersPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ManageUsers));
 
@@ -185,6 +188,8 @@ namespace Quick_Application1
             services.AddScoped<IAccountManager, AccountManager>();
 
             // Auth Handlers
+            services.AddSingleton<IAuthorizationHandler, ViewBancosAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, ManageBancosAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, ViewUserAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, ManageUserAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, ViewRoleAuthorizationHandler>();

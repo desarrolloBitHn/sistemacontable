@@ -48,14 +48,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\components\controls\account-info.component.ts" />
+    <None Remove="ClientApp\src\app\components\controls\currency-info.component.ts" />
+    <None Remove="ClientApp\src\app\components\controls\level-account-info.component.ts" />
+    <None Remove="ClientApp\src\app\components\controls\nature-account-info.component.ts" />
     <None Remove="ClientApp\src\app\services\banco.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\components\Catalogos\cuentas\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\components\controls\currency-info.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\controls\account-info.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\controls\nature-account-info.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\controls\level-account-info.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\banco.service.ts" />
   </ItemGroup>
 

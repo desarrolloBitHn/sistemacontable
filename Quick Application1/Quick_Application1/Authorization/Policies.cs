@@ -13,6 +13,12 @@ namespace Quick_Application1.Authorization
 {
     public class Policies
     {
+        ///<summary>Policy to allow viewing all banks records.</summary>
+        public const string ViewAllBanksPolicy = "View All Banks";
+
+        ///<summary>Policy to allow adding, removing and updating all banks records.</summary>
+        public const string ManageAllBankssPolicy = "Manage All Banks";
+
         ///<summary>Policy to allow viewing all user records.</summary>
         public const string ViewAllUsersPolicy = "View All Users";
 
@@ -48,5 +54,21 @@ namespace Quick_Application1.Authorization
         public static UserAccountAuthorizationRequirement Read = new UserAccountAuthorizationRequirement(ReadOperationName);
         public static UserAccountAuthorizationRequirement Update = new UserAccountAuthorizationRequirement(UpdateOperationName);
         public static UserAccountAuthorizationRequirement Delete = new UserAccountAuthorizationRequirement(DeleteOperationName);
+    }
+
+    /// <summary>
+    /// Operation Policy to allow adding, viewing, updating and deleting general or specific bank records.
+    /// </summary>
+    public static class BancoManagementOperations
+    {
+        public const string CreateOperationName = "Create";
+        public const string ReadOperationName = "Read";
+        public const string UpdateOperationName = "Update";
+        public const string DeleteOperationName = "Delete";
+
+        public static BancosAuthorizationRequirement Create = new BancosAuthorizationRequirement(CreateOperationName);
+        public static BancosAuthorizationRequirement Read = new BancosAuthorizationRequirement(ReadOperationName);
+        public static BancosAuthorizationRequirement Update = new BancosAuthorizationRequirement(UpdateOperationName);
+        public static BancosAuthorizationRequirement Delete = new BancosAuthorizationRequirement(DeleteOperationName);
     }
 }

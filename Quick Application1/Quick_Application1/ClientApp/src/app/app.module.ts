@@ -53,7 +53,7 @@ import { OrdersComponent } from "./components/orders/orders.component";
 import { SettingsComponent } from "./components/settings/settings.component";
 import { AboutComponent } from "./components/about/about.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
-import { BancosComponent } from "./components/Catalogos/bancos/bancos.component";
+import { CatalogosComponent } from "./components/Catalogos/catalogos.component";
 
 import { BannerDemoComponent } from "./components/controls/banner-demo.component";
 import { TodoDemoComponent } from "./components/controls/todo-demo.component";
@@ -66,6 +66,8 @@ import { UsersManagementComponent } from "./components/controls/users-management
 import { RolesManagementComponent } from "./components/controls/roles-management.component";
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
 
+import { AddBancosComponent } from "./components/controls/bank-info.component";
+import { BanksManagementComponent } from "./components/controls/bank-management.component";
 
 
 
@@ -103,7 +105,7 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         RolesManagementComponent, RoleEditorComponent,
         AboutComponent,
         NotFoundComponent,
-        BancosComponent,
+        CatalogosComponent, AddBancosComponent, BanksManagementComponent,
         NotificationsViewerComponent,
         SearchBoxComponent,
         StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,

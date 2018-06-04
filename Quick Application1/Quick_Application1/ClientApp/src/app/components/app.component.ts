@@ -12,6 +12,7 @@ import { AlertService, AlertDialog, DialogType, AlertMessage, MessageSeverity } 
 import { NotificationService } from "../services/notification.service";
 import { AppTranslationService } from "../services/app-translation.service";
 import { AccountService } from '../services/account.service';
+import { BancoService } from '../services/banco.service';
 import { LocalStoreManager } from '../services/local-store-manager.service';
 import { AppTitleService } from '../services/app-title.service';
 import { AuthService } from '../services/auth.service';
@@ -345,7 +346,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   get canViewCustomers() {
     return this.accountService.userHasPermission(Permission.viewUsersPermission); //eg. viewCustomersPermission
-  }
+    }
+
+    get canViewBanks() {
+        return this.accountService.userHasPermission(Permission.viewBanksPermission); //eg. viewBanksPermission
+    }
 
   get canViewProducts() {
     return this.accountService.userHasPermission(Permission.viewUsersPermission); //eg. viewProductsPermission

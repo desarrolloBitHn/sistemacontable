@@ -16,14 +16,17 @@ namespace DAL.Core
     {
         public static ReadOnlyCollection<ApplicationPermission> AllPermissions;
 
+        public const string BanksPermissionGroupName = "Permisos para Bancos";
+        public static ApplicationPermission ViewBanks = new ApplicationPermission("View Bancos", "bancos.view", BanksPermissionGroupName, "Permiso para ver los bancos creados y detalles                                                                                                                           ");
+        public static ApplicationPermission ManageBanks = new ApplicationPermission("Manage Bancos", "bancos.manage", BanksPermissionGroupName, "Permiso para crear, eliminar y modificar los detalles del banco");
 
-        public const string UsersPermissionGroupName = "User Permissions";
-        public static ApplicationPermission ViewUsers = new ApplicationPermission("View Users", "users.view", UsersPermissionGroupName, "Permission to view other users account details");
-        public static ApplicationPermission ManageUsers = new ApplicationPermission("Manage Users", "users.manage", UsersPermissionGroupName, "Permission to create, delete and modify other users account details");
+        public const string UsersPermissionGroupName = "Permisos para Usuarios";
+        public static ApplicationPermission ViewUsers = new ApplicationPermission("View Users", "users.view", UsersPermissionGroupName, "Permiso para ver los detalles de otras cuentas de usuarios");
+        public static ApplicationPermission ManageUsers = new ApplicationPermission("Manage Users", "users.manage", UsersPermissionGroupName, "Permiso para crear, borrar y modificar otras cuentas de usuarios");
 
-        public const string RolesPermissionGroupName = "Role Permissions";
-        public static ApplicationPermission ViewRoles = new ApplicationPermission("View Roles", "roles.view", RolesPermissionGroupName, "Permission to view available roles");
-        public static ApplicationPermission ManageRoles = new ApplicationPermission("Manage Roles", "roles.manage", RolesPermissionGroupName, "Permission to create, delete and modify roles");
+        public const string RolesPermissionGroupName = "Permisos para roles";
+        public static ApplicationPermission ViewRoles = new ApplicationPermission("View Roles", "roles.view", RolesPermissionGroupName, "Permiso para ver los roles habilitados");
+        public static ApplicationPermission ManageRoles = new ApplicationPermission("Manage Roles", "roles.manage", RolesPermissionGroupName, "Permiso para crear, borrar y modificar los roles");
         public static ApplicationPermission AssignRoles = new ApplicationPermission("Assign Roles", "roles.assign", RolesPermissionGroupName, "Permission to assign roles to users");
 
 
@@ -31,6 +34,9 @@ namespace DAL.Core
         {
             List<ApplicationPermission> allPermissions = new List<ApplicationPermission>()
             {
+                ViewBanks,
+                ManageBanks,
+
                 ViewUsers,
                 ManageUsers,
 
@@ -59,7 +65,7 @@ namespace DAL.Core
 
         public static string[] GetAdministrativePermissionValues()
         {
-            return new string[] { ManageUsers, ManageRoles, AssignRoles };
+            return new string[] { ManageBanks, ManageUsers, ManageRoles, AssignRoles };
         }
     }
 

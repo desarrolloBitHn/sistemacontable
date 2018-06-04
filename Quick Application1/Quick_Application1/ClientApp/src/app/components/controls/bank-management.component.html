@@ -1,0 +1,69 @@
+<div>
+    <div class="row control-box">
+        <div class="col-sm-8">
+            <div class="form-group search-box">
+                <search-box (searchChange)="onSearchChanged($event)" placeholder="{{'bank.management.Search' | translate}}"></search-box>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="navbar action-box">
+                <ul class="nav navbar-nav navbar-right">
+                    <li *ngIf="canManageBanks" class="toolbaritem">
+                        <a href="javascript:;" (click)="newBank(row)">
+                            <i class="fa fa-plus-circle"></i> {{'bank.management.NewBank' | translate}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <ngx-datatable class="material colored-header sm table table-striped table-hover"
+                   [loadingIndicator]="loadingIndicator"
+                   [rows]="rows"
+                   [rowHeight]="35"
+                   [headerHeight]="35"
+                   [footerHeight]="35"
+                   [columns]="columns"
+                   [scrollbarV]="true"
+                   [columnMode]="'force'">
+    </ngx-datatable>
+
+    <ng-template #indexTemplate let-value="value">
+        <strong>{{value}}</strong>
+    </ng-template>
+
+    <!--<ng-template #descripcionTemplate let-row="row" let-value="value">
+        <span [class.locked-out]="row.isLockedOut" [class.user-disabled]="!row.isEnabled">
+            <i *ngIf="row.isLockedOut" class="fa fa-exclamation-triangle"> </i>
+            <i *ngIf="!row.isEnabled" class="fa fa-exclamation"> </i>
+            {{value}}
+        </span>
+    </ng-template>-->
+
+
+    <ng-template #actionsTemplate let-row="row" let-value="value" let-i="index">
+        <div *ngIf="canManageUsers">
+            <a class="btn btn-link btn-xs" href="javascript:;" (click)="editBank(row)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{'bank.management.Edit' | translate}}</a>
+            |
+            <a class="btn btn-link btn-xs" href="javascript:;" (click)="deleteBank(row)"><i class="fa fa-trash-o" aria-hidden="true"></i> {{'bank.management.Delete' | translate}}</a>
+        </div>
+    </ng-template>
+
+
+    <div class="modal fade" bsModal #bankModal="bs-modal" (onHidden)="onEditorModalHidden()" [config]="{backdrop: 'static'}" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left"><i class="fa fa-user-circle-o"></i> {{editingDescription ? ('bank.management.EditUser' | translate:editingUserName) : ('bank.management.NewUser' | translate)}}</h4>
+                    <button type="button" class="close pull-right" title="Close" (click)="bankModal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <user-info #userEditor [isGeneralEditor]="true"></user-info>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

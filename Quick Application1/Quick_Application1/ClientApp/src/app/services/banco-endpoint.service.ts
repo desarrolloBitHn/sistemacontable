@@ -16,8 +16,17 @@ import { ConfigurationService } from './configuration.service';
 export class BancoEndpont extends EndpointFactory {
 
     private readonly _bancos: string = "/api/banco/bancos";
+    private readonly _bancoId: string = "/api/banco/";
+    private readonly _guardarBanco: string = "/api/banco/";
+    private readonly _actualizarBanco: string = "/api/banco/actualizar/";
+    private readonly _borrarBanco: string = "/api/banco/borrar/";
+
 
     get bancosUrl() { return this.configurations.baseUrl + this._bancos; }
+    get bancosIdUrl() { return this.configurations.baseUrl + this._bancoId; }
+    get guardarBancoUrl() { return this.configurations.baseUrl + this._guardarBanco; }
+    get actualizarBancoUrl() { return this.configurations.baseUrl + this._actualizarBanco; }
+    get borrarBancoUrl() { return this.configurations.baseUrl + this._borrarBanco; }
 
     constructor(http: HttpClient, configurations: ConfigurationService, injector: Injector) {
         super(http, configurations, injector);
@@ -26,41 +35,49 @@ export class BancoEndpont extends EndpointFactory {
 
     getBancosEndpoint<T>(): Observable<T> {
         let endpointUrl = `${this.bancosUrl}/`;
-
+        
         return this.http.get<T>(endpointUrl, this.getRequestHeaders())
             .catch(error => {
                 return this.handleError(error, () => this.getBancosEndpoint());
             });
     }
 
+    getBancoIdEndpoint<T>(bancoId?: number): Observable<T> {
+        let endpointUrl = `${this.bancosIdUrl}/${bancoId}`;
 
-    //getBancos() {
-    //    return this._http.get( "http://localhost:56689/api/bancos")
-    //        .map((response: Response) => response.json())
-    //        .catch(this.errorHandler);
-    //}
-    //getBancoById(id: number) {
-    //    return this._http.get("http://localhost:56689/api/bancos/" + id)
-    //        .map((response: Response) => response.json())
-    //        .catch(this.errorHandler)
-    //}
-    //saveBancos(banco) {
-    //    return this._http.post('http://localhost:56689/api/bancos/', banco)
-    //        .map((response: Response) => response.json())
-    //        .catch(this.errorHandler)
-    //}
-    //updateBanco(id, banco) {
-    //    return this._http.put('http://localhost:56689/api/bancos/' + id, banco )
-    //        .map((response: Response) => response.json())
-    //        .catch(this.errorHandler);
-    //}
-    ////deleteEmployee(id) {
-    ////    return this._http.delete("http://localhost:56689/api/bancos/Delete/" + id)
-    ////        .map((response: Response) => response.json())
-    ////        .catch(this.errorHandler);
-    ////}
-    //errorHandler(error: Response) {
-    //    console.log(error);
-    //    return Observable.throw(error);
-    //}
+        return this.http.get<T>(endpointUrl, this.getRequestHeaders())
+            .catch(error => {
+               return this.handleError(error, () => this.getBancoIdEndpoint(bancoId));
+           });
+    }
+
+    getGuardarBancoEndpoint<T>(bancoObject: any): Observable<T> {
+        let endpointUrl = `${this.guardarBancoUrl}/`;
+
+        return this.http.post<T>(endpointUrl, JSON.stringify(bancoObject), this.getRequestHeaders())
+            .catch(error => {
+                return this.handleError(error, () => this.getGuardarBancoEndpoint(bancoObject));
+            });
+    }
+
+    getActualizarBancoEndpoint<T>(bancoObject: any, bancoId?: number): Observable<T> {
+        let endpointUrl = `${this.actualizarBancoUrl}/${bancoId}`;
+
+        return this.http.put<T>(endpointUrl, JSON.stringify(bancoObject), this.getRequestHeaders())
+            .catch(error => {
+               return this.handleError(error, () => this.getActualizarBancoEndpoint(bancoObject));
+            });
+    }
+
+    getEliminarBancoEndpoint<T>(bancoObject: any, bancoId?: number): Observable<T> {
+        let endpointUrl = `${this.borrarBancoUrl}/${bancoId}`;
+
+        return this.http.put<T>(endpointUrl, JSON.stringify(bancoObject), this.getRequestHeaders())
+            .catch(error => {
+               return this.handleError(error, () => this.getActualizarBancoEndpoint(bancoObject));
+            });
+    }
+
+
+
 }

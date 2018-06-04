@@ -21,6 +21,7 @@ namespace DAL
         IProductRepository _products;
         IOrdersRepository _orders;
         IbancosRepository _bancos;
+        InaturalezacuentasRepository _naturaleza;
 
 
 
@@ -29,6 +30,17 @@ namespace DAL
             _context = context;
         }
 
+
+        public InaturalezacuentasRepository naturalezacuenta
+        {
+            get
+            {
+                if (_naturaleza == null)
+                    _naturaleza = new naturalezacuentaRepository(_context);
+
+                return _naturaleza;
+            }
+        }
 
         public IbancosRepository Bancos
         {

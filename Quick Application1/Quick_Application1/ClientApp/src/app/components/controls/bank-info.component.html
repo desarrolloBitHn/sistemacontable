@@ -1,0 +1,45 @@
+<div>
+    <form *ngIf="formResetToggle" [attr.autocomplete]="isGeneralEditor ? NaN : null" class="form-horizontal" name="bankInfoForm" #f="ngForm" novalidate
+          (ngSubmit)="f.bancoForm.valid ? save() :
+
+          (!descripcion.valid && showErrorAlert('El nombre del banco es requerido', 'Por favor ingrese el nombre del banco'));;">
+
+        <div class="form-group has-feedback">
+            <label [class.col-md-3]="isViewOnly" [class.col-md-2]="!isViewOnly" class="control-label" for="descripcion-{{uniqueId}}">{{'bank.editor.Description' | translate}}</label>
+            <div *ngIf="!isEditMode" [class.col-md-9]="isViewOnly" [class.col-md-10]="!isViewOnly">
+                <p class="form-control-static">{{banco.descripcion}}</p>
+            </div>
+            <div *ngIf="isEditMode" [class.col-md-9]="isViewOnly" [class.col-md-10]="!isViewOnly" [ngClass]="{'has-success': f.submitted && descripcion.valid, 'has-error' : f.submitted && !descripcion.valid}">
+                <input type="text" attr.id="descripcion-{{uniqueId}}" name="descripcion" [attr.autocomplete]="isGeneralEditor ? new-password : null" placeholder="{{'bank.editor.DescriptionPlaceholder' | translate}}"
+                       class="form-control" [(ngModel)]="bank.descripcion" #descripcion="ngModel" required maxlength="200" />
+                <span *ngIf="showValidationErrors && f.submitted" class="glyphicon form-control-feedback" [ngClass]="{'glyphicon-ok ': descripcion.valid, 'glyphicon-remove' : !userName.valid}"></span>
+                <span *ngIf="showValidationErrors && f.submitted && !descripcion.valid" class="errorMessage">
+                    {{'bank.editor.DescriptionRequired' | translate}}
+                </span>
+            </div>
+        </div>
+
+        <div *ngIf="!isViewOnly" class="row">
+            <div class="col-md-12">
+                <hr [class.last-separator-hr]="!isEditMode" [class.edit-last-separator-hr]="isEditMode" />
+            </div>
+        </div>
+
+        <div class="col-sm-7">
+            <div class="pull-right">
+                <button *ngIf="!isEditMode && isGeneralEditor" type="button" (click)="close()" class="btn btn-default"><i class='fa fa-close'></i> {{'users.editor.Close' | translate}}</button>
+                <button *ngIf="!isEditMode && !isGeneralEditor" type="button" (click)="edit()" class="btn btn-default"><i class='fa fa-edit'></i> {{'users.editor.Edit' | translate}}</button>
+                <button *ngIf="isEditMode" type="button" (click)="cancel()" class="btn btn-danger" [disabled]="isSaving"><i class='fa fa-times'></i> {{'users.editor.Cancel' | translate}}</button>
+                <button *ngIf="isEditMode" type="submit" class="btn btn-primary" [disabled]="isSaving">
+                    <i *ngIf="!isSaving" class='fa fa-save'></i><i *ngIf="isSaving" class='fa fa-circle-o-notch fa-spin'></i> {{isSaving ? ('users.editor.Saving' | translate) : ('users.editor.Save' | translate)}}
+                </button>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+
+    </form>
+</div>
+    
+

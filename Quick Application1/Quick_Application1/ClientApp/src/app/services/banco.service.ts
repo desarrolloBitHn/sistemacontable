@@ -8,6 +8,9 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+
+
+
 import { bancos } from '../models/bancos.model';
 
 
@@ -21,4 +24,21 @@ export class BancoService {
 
         return this.bancoEndpoint.getBancosEndpoint<bancos[]>();
     }
+
+    getBancoById(id?: number) {
+        return this.bancoEndpoint.getBancoIdEndpoint(id);
+    }
+
+    ActualizarBanco(id: number, _banco: bancos) {
+       return this.bancoEndpoint.getActualizarBancoEndpoint(_banco, id);
+    }
+
+    GuardarBanco(_banco: bancos) {
+        return this.bancoEndpoint.getGuardarBancoEndpoint(_banco);
+    }
+
+    EliminarBanco(id: number, _banco: bancos) {
+        return this.bancoEndpoint.getEliminarBancoEndpoint(_banco,id);
+    }
+
 }
