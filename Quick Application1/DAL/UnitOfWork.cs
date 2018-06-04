@@ -31,7 +31,7 @@ namespace DAL
         }
 
 
-        public InaturalezacuentasRepository naturalezacuenta
+        public InaturalezacuentasRepository Naturaleza
         {
             get
             {
